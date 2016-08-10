@@ -8,4 +8,10 @@ describe Account do
     end
   end
 
+  describe '#withdraw' do
+    it 'does not raise an error with valid input (integer pennies)' do
+      expect { my_account.withdraw(34500) }.to_not raise_error
+    end
+  end
+
 end

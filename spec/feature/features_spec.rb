@@ -27,5 +27,14 @@ describe 'Features' do
       expect { my_account.deposit(34500) }.to_not raise_error
     end
 
+    #US4
+    #As a person with some money
+    #So I can have money to use
+    #I want to withdraw from the account
+    it 'User opens the account, Account#withdraw does not raise an error' do
+      my_account = Account.new 
+      expect { my_account.withdraw(34500) }.to_not raise_error
+    end
+
   end
 end

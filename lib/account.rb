@@ -4,4 +4,7 @@ class Account
   def deposit(amount) #GBP, expressed in pence
   end
 
+  def withdraw(amount) #GBP, expressed in pence
+  end
+
 end
