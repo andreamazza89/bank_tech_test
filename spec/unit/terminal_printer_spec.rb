@@ -1,3 +1,4 @@
+#Understands how to print account information into the the console
 describe TerminalPrinter do
 
   describe '#print_statement' do

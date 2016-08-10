@@ -25,11 +25,11 @@ The inuput to the deposit and withdraw methods will be in cents.
     <td colspan="2"><b>Account</b></td>
   </tr>
   <tr>
-    <td>#deposit(integer pennies) positively updates the balance</td>
+    <td>#deposit(integer pence) positively updates the balance</td>
     <td></td>
   </tr>
   <tr>
-    <td>#withdraw(integer pennies) negatively updates the balance</td>
+    <td>#withdraw(integer pence) negatively updates the balance</td>
     <td></td>
   </tr>
   <tr>
