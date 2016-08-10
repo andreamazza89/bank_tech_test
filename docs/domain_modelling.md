@@ -6,12 +6,15 @@ specification, which can be found [here](https://github.com/makersacademy/course
 
 For the first iteration, the deposit and withdrawal amounts are allowed to be as
 large as the language (Ruby) allows an integer to be. This is unspecified by the
-so the easiest soltion is implemented to then iterate on.
+client so the easiest soltion is implemented to then iterate on.
 
 The same argument goes for negative balance: as the client has not specified a 
 requirement to limit or not allow negative balance, the first iteration will 
 allow a user's balance to become negative, the only limitation being how large an
 integer can be in Ruby.
+
+Again, as no spcifics are given on creating a new account, in this iteration a 
+new account is instantiated with a balance of 0.
 
 The inuput to the deposit and withdraw methods will be in cents.
 

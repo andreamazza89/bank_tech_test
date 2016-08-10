@@ -1,3 +1,6 @@
+require_relative '../lib/account.rb'
+require_relative '../lib/terminal_printer.rb'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
