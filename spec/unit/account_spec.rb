@@ -14,4 +14,10 @@ describe Account do
     end
   end
 
+  describe '#statement' do
+    it 'does not raise an when called' do
+      expect { my_account.statement }.to_not raise_error
+    end
+  end
+
 end

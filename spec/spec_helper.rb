@@ -1,5 +1,8 @@
 require_relative '../lib/account.rb'
 require_relative '../lib/terminal_printer.rb'
+require 'timecop'
+
+Timecop.freeze(Time.local(2012, 01, 10))
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
