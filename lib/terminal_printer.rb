@@ -18,7 +18,7 @@ class TerminalPrinter
       end
     end
     
-    print HEADER + formatted_statement.join
+    print HEADER + formatted_statement.reverse.join
   end
 
 private
