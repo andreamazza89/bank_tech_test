@@ -16,7 +16,7 @@ class Account
   end
 
   def statement
-    @transactions_history
+    @transactions_history.dup
   end
 
 private
