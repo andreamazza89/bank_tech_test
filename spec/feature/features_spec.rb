@@ -18,7 +18,7 @@ describe 'Features' do
     it 'User opens the account, TerminalPrinter#print_statement shows no transactions' do
       my_account = Account.new 
       terminal_printer = TerminalPrinter.new
-      expect { terminal_printer.print_statement(my_account.statement) }.to output("date || credit || debit || balance\n").to_stdout
+      expect { terminal_printer.print_statement(my_account.statement) }.to output("date || credit || debit || balance\n").to_stdout_from_any_process
     end
 
     #US3
@@ -49,7 +49,7 @@ describe 'Features' do
       terminal_printer = TerminalPrinter.new
       my_account.deposit(100000)
 
-      expect { terminal_printer.print_statement(my_account.statement) }.to output("date || credit || debit || balance\n10/01/2012 || 1000.00 || || 1000.00\n").to_stdout
+      expect { terminal_printer.print_statement(my_account.statement) }.to output("date || credit || debit || balance\n10/01/2012 || 1000.00 || || 1000.00\n").to_stdout_from_any_process
     end
 
     it 'User opens the account, makes a few transactions, TerminalPrinter#print_statement shows the transaction with date' do
@@ -63,7 +63,7 @@ describe 'Features' do
       my_account.withdraw(50000)
       Timecop.freeze(Time.local(2012, 01, 10))
 
-      expect { terminal_printer.print_statement(my_account.statement) }.to output("date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00\n13/01/2012 || 2000.00 || || 3000.00\n10/01/2012 || 1000.00 || || 1000.00\n").to_stdout
+      expect { terminal_printer.print_statement(my_account.statement) }.to output("date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00\n13/01/2012 || 2000.00 || || 3000.00\n10/01/2012 || 1000.00 || || 1000.00\n").to_stdout_from_any_process
     end
   end
 end

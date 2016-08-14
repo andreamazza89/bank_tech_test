@@ -3,6 +3,10 @@ class TerminalPrinter
 
   HEADER = "date || credit || debit || balance\n" 
 
+  def initialize(output = STDOUT)
+    @output = output
+  end
+
   def print_statement(statement)
     if statement.empty?
       formatted_statement = ['']
@@ -18,10 +22,12 @@ class TerminalPrinter
       end
     end
     
-    print HEADER + formatted_statement.reverse.join
+    output.puts HEADER + formatted_statement.reverse.join
   end
 
 private
+
+  attr_reader :output
 
   def convert_pennies_to_pounds(amount)
     amount = amount.abs.to_s
