@@ -1,33 +1,29 @@
-#Understands how to print account information into the the console
+#Understands how to print account information as a string into the injected output stream
 class TerminalPrinter
-
-  HEADER = "date || credit || debit || balance\n" 
 
   def initialize(output = STDOUT)
     @output = output
   end
 
   def print_statement(statement)
-    if statement.empty?
-      formatted_statement = ['']
-    else
-      formatted_statement = statement.map.with_index do |transaction, index|
-        date       = transaction[:date].strftime('%d/%m/%Y')
-        credit     = transaction[:amount] >= 0 ? convert_pennies_to_pounds(transaction[:amount]) : '' 
-        debit      = transaction[:amount] < 0  ? convert_pennies_to_pounds(transaction[:amount]) : '' 
-        balance    = calculate_balance(statement[0..index])
-        balance    = convert_pennies_to_pounds(balance)
-        separator  = " || "
-        (date + separator + credit + separator + debit + separator + balance + "\n").squeeze(' ')
-      end
-    end
-    
-    output.puts HEADER + formatted_statement.reverse.join
+    @output.puts HEADER + stringify_statement(statement)
   end
 
 private
-
-  attr_reader :output
+  
+  def stringify_statement(statement)
+    formatted_statement = statement.map.with_index do |transaction, index|
+      date      = transaction[:date].strftime('%d/%m/%Y')
+      credit    = transaction[:amount] >= 0 ? convert_pennies_to_pounds(transaction[:amount]) : '' 
+      debit     = transaction[:amount] < 0  ? convert_pennies_to_pounds(transaction[:amount]) : '' 
+      balance   = calculate_balance(statement[0..index])
+      balance   = convert_pennies_to_pounds(balance)
+      separator = " || "
+      (date + separator + credit + separator + debit + separator + balance + "\n").squeeze(' ')
+    end
+  
+    formatted_statement.reverse.join
+  end
 
   def convert_pennies_to_pounds(amount)
     amount = amount.abs.to_s
@@ -44,5 +40,7 @@ private
   def calculate_balance(transactions_to_date)
     transactions_to_date.reduce(0) { |balance, transaction| balance += transaction[:amount] }
   end
+
+  HEADER = "date || credit || debit || balance\n" 
 
 end
