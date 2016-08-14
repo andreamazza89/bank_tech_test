@@ -33,6 +33,8 @@ describe 'Features: printer' do
       .to output(HEADER + THIRD_TRANSACTION + SECOND_TRANSACTION + FIRST_TRANSACTION).to_stdout_from_any_process
   end
 
+  #These constants are both used here and in the unit tests, so they should be
+  #exported to a separate file and required here
   HEADER             = "date || credit || debit || balance\n"
   FIRST_TRANSACTION  = "10/01/2012 || 1000.00 || || 1000.00\n"
   SECOND_TRANSACTION = "13/01/2012 || 2000.00 || || 3000.00\n"
